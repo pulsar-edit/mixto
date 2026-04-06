@@ -1,5 +1,5 @@
 {
-  "name": "mixto",
+  "name": "@pulsar-edit/mixto",
   "version": "1.0.0",
   "description": "A mixin superclass. Its subclasses have `.extend` and `.includeInto` methods to mix behavior into other objects and classes.",
   "main": "lib/mixin",
@@ -9,21 +9,16 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/atom/mixto"
+    "url": "https://github.com/pulsar-edit/mixto"
   },
   "keywords": [
     "mixin",
     "trait"
   ],
   "bugs": {
-    "url": "https://github.com/atom/mixto/issues"
+    "url": "https://github.com/pulsar-edit/mixto/issues"
   },
-  "licenses": [
-    {
-      "type": "MIT",
-      "url": "http://github.com/atom/mixto/raw/master/LICENSE.md"
-    }
-  ],
+  "license": "MIT",
   "devDependencies": {
     "coffee-script": "~1.6.3",
     "jasmine-focused": "~0.19.0",

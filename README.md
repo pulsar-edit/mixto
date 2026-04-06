@@ -1,5 +1,4 @@
 # Mixto: A simple mixin superclass
-[![CI](https://github.com/atom/mixto/actions/workflows/ci.yml/badge.svg)](https://github.com/atom/mixto/actions/workflows/ci.yml)
 
 To create a mixin, subclass mixto:
 
