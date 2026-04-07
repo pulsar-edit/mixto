@@ -1,47 +1,39 @@
-(function() {
-  let Mixin;
+function Mixin() {
+  if (typeof this.extended === "function") {
+    this.extended();
+  }
+}
 
-  module.exports = Mixin = (function() {
-    Mixin.includeInto = function(constructor) {
-      this.extend(constructor.prototype);
-      for (let name in this) {
-        const value = this[name];
-        if (ExcludedClassProperties.indexOf(name) === -1) {
-          if (!constructor.hasOwnProperty(name)) {
-            constructor[name] = value;
-          }
-        }
-      }
-      return this.included?.call(constructor);
-    };
-
-    Mixin.extend = function(object) {
-      for (const name of Object.getOwnPropertyNames(this.prototype)) {
-        if (ExcludedPrototypeProperties.indexOf(name) === -1) {
-          if (!object.hasOwnProperty(name)) {
-            object[name] = this.prototype[name];
-          }
-        }
-      }
-      return this.prototype.extended?.call(object);
-    };
-
-    function Mixin() {
-      if (typeof this.extended === "function") {
-        this.extended();
+Mixin.includeInto = function(constructor) {
+  this.extend(constructor.prototype);
+  for (let name in this) {
+    const value = this[name];
+    if (ExcludedClassProperties.indexOf(name) === -1) {
+      if (!constructor.hasOwnProperty(name)) {
+        constructor[name] = value;
       }
     }
-
-    return Mixin;
-
-  })();
-
-  const ExcludedClassProperties = ['__super__'];
-
-  for (let name in Mixin) {
-    ExcludedClassProperties.push(name);
   }
+  return this.included?.call(constructor);
+};
 
-  const ExcludedPrototypeProperties = ['constructor', 'extended'];
+Mixin.extend = function(object) {
+  for (const name of Object.getOwnPropertyNames(this.prototype)) {
+    if (ExcludedPrototypeProperties.indexOf(name) === -1) {
+      if (!object.hasOwnProperty(name)) {
+        object[name] = this.prototype[name];
+      }
+    }
+  }
+  return this.prototype.extended?.call(object);
+};
 
-}).call(this);
+const ExcludedClassProperties = ['__super__'];
+
+for (let name in Mixin) {
+  ExcludedClassProperties.push(name);
+}
+
+const ExcludedPrototypeProperties = ['constructor', 'extended'];
+
+module.exports = Mixin;
