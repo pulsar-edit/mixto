@@ -1,4 +1,4 @@
-Mixin = require '../src/mixin'
+Mixin = require '../src/mixin.js'
 
 describe "Mixin", ->
   class TestMixin extends Mixin
