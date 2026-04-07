@@ -1,33 +1,29 @@
 (function() {
-  var ExcludedClassProperties, ExcludedPrototypeProperties, Mixin, name;
+  let Mixin;
 
   module.exports = Mixin = (function() {
     Mixin.includeInto = function(constructor) {
-      var name, value, _ref;
       this.extend(constructor.prototype);
-      for (name in this) {
-        value = this[name];
+      for (let name in this) {
+        const value = this[name];
         if (ExcludedClassProperties.indexOf(name) === -1) {
           if (!constructor.hasOwnProperty(name)) {
             constructor[name] = value;
           }
         }
       }
-      return (_ref = this.included) != null ? _ref.call(constructor) : void 0;
+      return this.included?.call(constructor);
     };
 
     Mixin.extend = function(object) {
-      var name, _i, _len, _ref, _ref1;
-      _ref = Object.getOwnPropertyNames(this.prototype);
-      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-        name = _ref[_i];
+      for (const name of Object.getOwnPropertyNames(this.prototype)) {
         if (ExcludedPrototypeProperties.indexOf(name) === -1) {
           if (!object.hasOwnProperty(name)) {
             object[name] = this.prototype[name];
           }
         }
       }
-      return (_ref1 = this.prototype.extended) != null ? _ref1.call(object) : void 0;
+      return this.prototype.extended?.call(object);
     };
 
     function Mixin() {
@@ -40,12 +36,12 @@
 
   })();
 
-  ExcludedClassProperties = ['__super__'];
+  const ExcludedClassProperties = ['__super__'];
 
-  for (name in Mixin) {
+  for (let name in Mixin) {
     ExcludedClassProperties.push(name);
   }
 
-  ExcludedPrototypeProperties = ['constructor', 'extended'];
+  const ExcludedPrototypeProperties = ['constructor', 'extended'];
 
 }).call(this);
