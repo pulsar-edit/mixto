@@ -2,7 +2,7 @@
   "name": "mixto",
   "version": "1.0.0",
   "description": "A mixin superclass. Its subclasses have `.extend` and `.includeInto` methods to mix behavior into other objects and classes.",
-  "main": "lib/mixin",
+  "main": "src/mixin.js",
   "scripts": {
     "prepublish": "grunt clean coffee lint",
     "test": "grunt test"
